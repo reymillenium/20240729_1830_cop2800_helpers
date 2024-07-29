@@ -4,12 +4,12 @@
 
 ### Package Content:
 
-- ArrayHelper
-- DatabaseHelper
-- DateTimeHelper
-- MathHelper
-- TerminalHelper
-- TextFileHelper
+- ArrayHelper `v2024.07.29.0146`
+- DatabaseHelper `v2024.07.29.0146`
+- DateTimeHelper `v2024.07.29.0306`
+- MathHelper `v2024.07.28.2330`
+- TerminalHelper `v2024.07.28.2156`
+- TextFileHelper `v2024.07.29.0319`
 
 ## Compatibility:
 
