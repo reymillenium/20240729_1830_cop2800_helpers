@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * TextFileHelper (Version 2024.07.29.0319)
+ * TextFileHelper (Version 2024.07.29.2214)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,22 +50,6 @@ final public class TextFileHelper {
         return List.of();
     }
 
-    // Adds text to a .txt file only if it already exists
-    public static void addTextToExistingFile(final String fileName) {
-        try {
-            if (fileExist(fileName)) {
-                FileWriter writer = new FileWriter(fileName, true);
-                final String textLine = TerminalHelper.getStringFromMessage("Write a single line of text please: ");
-                writer.write(textLine);
-                writer.close();
-            }
-        } catch (IOException e) {
-            // e.printStackTrace();
-            System.err.println("Error reading file: " + e.getMessage());
-
-        }
-    }
-
     // Either creates a .txt file and adds text to it, or adds to an existent one
     public static void addTextToFile(final String fileName) {
         try {
@@ -80,6 +64,11 @@ final public class TextFileHelper {
         }
     }
 
+    // Adds text to a .txt file only if it already exists
+    public static void addTextToExistingFile(final String fileName) {
+        if (fileExist(fileName)) addTextToFile(fileName);
+    }
+
     // Either creates a .txt file and adds a new line of text to it, or adds to an existent one
     public static void addTextLineToFile(final String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
@@ -90,5 +79,10 @@ final public class TextFileHelper {
             // e.printStackTrace();
             System.err.println("Error writing to file: " + e.getMessage());
         }
+    }
+
+    // Adds a text line to a given .txt file name only if it already exists
+    public static void addTextLineToExistingFile(final String fileName) {
+        if (fileExist(fileName)) addTextLineToFile(fileName);
     }
 }

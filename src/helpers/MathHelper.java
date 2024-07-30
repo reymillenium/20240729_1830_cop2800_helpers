@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * MathHelper (Version 2024.07.28.2330)
+ * MathHelper (Version 2024.07.29.2237)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -120,12 +120,12 @@ public class MathHelper {
 
     // Formats a given int by inserting a comma every 3 digits of its equivalent string, to make it more readable, and adds a customizable currency symbol
     public static String monetizeInteger(final int integerValue, final boolean prepend) {
-        return (prepend ? ("$ ") : "") + humanizeUnsignedInteger(integerValue) + (prepend ? "" : " $");
+        return monetizeInteger(integerValue, prepend, "$");
     }
 
     // Formats a given int by inserting a comma every 3 digits of its equivalent string, to make it more readable, and adds a customizable currency symbol
     public static String monetizeInteger(final int integerValue) {
-        return "$ " + humanizeUnsignedInteger(integerValue);
+        return monetizeInteger(integerValue, true, "$");
     }
 
     // Formats a given double by inserting a comma every 3 digits of its equivalent string, to make it more readable, and adds a customizable currency symbol
@@ -135,17 +135,17 @@ public class MathHelper {
 
     // Formats a given double by inserting a comma every 3 digits of its equivalent string, to make it more readable, and adds a hardcoded currency symbol ($)
     public static String monetizeDouble(final double doubleValue, final int precision, final boolean prepend) {
-        return (prepend ? ("$ ") : "") + humanizeUnsignedDoubleAndRoundDecimals(doubleValue, precision) + (prepend ? "" : " $");
+        return monetizeDouble(doubleValue, precision, prepend, "$");
     }
 
     // Formats a given double by inserting a comma every 3 digits of its equivalent string, to make it more readable, and adds a hardcoded currency symbol ($)
     public static String monetizeDouble(final double doubleValue, final int precision) {
-        return "$ " + humanizeUnsignedDoubleAndRoundDecimals(doubleValue, precision);
+        return monetizeDouble(doubleValue, precision, true, "$");
     }
 
     // Formats a given double by inserting a comma every 3 digits of its equivalent string, to make it more readable, and adds a hardcoded currency symbol ($)
     public static String monetizeDouble(final double doubleValue) {
-        return "$ " + humanizeUnsignedDoubleAndRoundDecimals(doubleValue, 2);
+        return monetizeDouble(doubleValue, 2, true, "$");
     }
 
     // Rounds up a given double number, with a given amount of decimal places

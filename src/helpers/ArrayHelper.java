@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * ArrayHelper (Version 2024.07.29.0146)
+ * ArrayHelper (Version 2024.07.29.2242)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -203,16 +203,16 @@ public class ArrayHelper {
     public static int highestIntegerInTwoDimensionsArray(int[][] twoDimensionsDoublesArray) {
         final int rows = twoDimensionsDoublesArray.length;
         final int columns = twoDimensionsDoublesArray[0].length;
-        int higher = twoDimensionsDoublesArray[0][0];
+        int highest = twoDimensionsDoublesArray[0][0];
 
         for (int row = 0; row < rows; row++) {
             for (int col = (row == 0 ? 1 : 0); col < columns; col++) {
                 int number = twoDimensionsDoublesArray[row][col];
-                if (number > higher) higher = number;
+                if (number > highest) highest = number;
             }
         }
 
-        return higher;
+        return highest;
     }
 
     // Determines the lowest number among a two-dimensional array of integers
@@ -235,16 +235,16 @@ public class ArrayHelper {
     public static double highestDoubleInTwoDimensionsArray(double[][] twoDimensionsDoublesArray) {
         final int rows = twoDimensionsDoublesArray.length;
         final int columns = twoDimensionsDoublesArray[0].length;
-        double higher = twoDimensionsDoublesArray[0][0];
+        double highest = twoDimensionsDoublesArray[0][0];
 
         for (int row = 0; row < rows; row++) {
             for (int col = (row == 0 ? 1 : 0); col < columns; col++) {
                 double number = twoDimensionsDoublesArray[row][col];
-                if (number > higher) higher = number;
+                if (number > highest) highest = number;
             }
         }
 
-        return higher;
+        return highest;
     }
 
     // Determines the lowest number among a two-dimensional array of doubles

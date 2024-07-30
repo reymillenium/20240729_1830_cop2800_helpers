@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * TerminalHelper (Version 2024.07.28.2156)
+ * TerminalHelper (Version 2024.07.29.2234)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -111,7 +111,7 @@ final public class TerminalHelper {
         Scanner scanner = new Scanner(System.in);
 
         do {
-            System.out.print(message + (showRange ? (" (" + minValue.toString() + " - " + maxValue.toString() + ")") : "") + ": ");
+            System.out.print(message + (showRange ? (" (" + minValue + " - " + maxValue + ")") : "") + ": ");
             String numberAsString = scanner.nextLine();  // Value typed by the user, that can be an integer or not
 
             if (!isInteger(numberAsString)) {
@@ -134,80 +134,17 @@ final public class TerminalHelper {
 
     // Receives and validates an integer number from the console
     public static int getInteger(final String message, final Integer minValue, final Integer maxValue, final boolean showRange, final String errorMessage) {
-        int number = 0; // Integer conversion (if possible) of the value typed by the user
-        boolean keepAsking = true; // If we must keep asking for a value to the user, until receiving an integer
-        Scanner scanner = new Scanner(System.in);
-
-        do {
-            System.out.print(message + (showRange ? (" (" + minValue.toString() + " - " + maxValue.toString() + ")") : "") + ": ");
-            String numberAsString = scanner.nextLine();  // Value typed by the user, that can be an integer or not
-
-            if (!isInteger(numberAsString)) {
-                System.out.println("That's not an integer number. Try again.");
-                continue; // There is no point in keep validating any further, as it's not even an integer
-            }
-
-            number = Integer.parseInt(numberAsString); // When we reach this point, that means we have a proper integer
-            final boolean invalidInput = number < minValue || maxValue < number; // If the input is valid, based only in minimum & maximum possible values
-            keepAsking = invalidInput;
-            if (keepAsking)
-                System.out.println(errorMessage.isBlank() ? "You must type an integer number between " + minValue + " and " + maxValue + ". Please try again." : errorMessage);
-        } while (keepAsking);
-        // scanner.close();
-
-        return number;
+        return getInteger(message, minValue, maxValue, showRange, errorMessage, new ArrayList<>());
     }
 
     // Receives and validates an integer number from the console
     public static int getInteger(final String message, final Integer minValue, final Integer maxValue, final boolean showRange) {
-        int number = 0; // Integer conversion (if possible) of the value typed by the user
-        boolean keepAsking = true; // If we must keep asking for a value to the user, until receiving an integer
-        Scanner scanner = new Scanner(System.in);
-
-        do {
-            System.out.print(message + (showRange ? (" (" + minValue.toString() + " - " + maxValue.toString() + ")") : "") + ": ");
-            String numberAsString = scanner.nextLine();  // Value typed by the user, that can be an integer or not
-
-            if (!isInteger(numberAsString)) {
-                System.out.println("That's not an integer number. Try again.");
-                continue; // There is no point in keep validating any further, as it's not even an integer
-            }
-
-            number = Integer.parseInt(numberAsString); // When we reach this point, that means we have a proper integer
-            final boolean invalidInput = number < minValue || maxValue < number; // If the input is valid, based only in minimum & maximum possible values
-            keepAsking = invalidInput;
-            if (keepAsking)
-                System.out.println("You must type an integer number between " + minValue + " and " + maxValue + ". Please try again.");
-        } while (keepAsking);
-        // scanner.close();
-
-        return number;
+        return getInteger(message, minValue, maxValue, showRange, "", new ArrayList<>());
     }
 
     // Receives and validates an integer number from the console
     public static int getInteger(final String message, final Integer minValue, final Integer maxValue) {
-        int number = 0; // Integer conversion (if possible) of the value typed by the user
-        boolean keepAsking = true; // If we must keep asking for a value to the user, until receiving an integer
-        Scanner scanner = new Scanner(System.in);
-
-        do {
-            System.out.print(message + " (" + minValue.toString() + " - " + maxValue.toString() + "): ");
-            String numberAsString = scanner.nextLine();  // Value typed by the user, that can be an integer or not
-
-            if (!isInteger(numberAsString)) {
-                System.out.println("That's not an integer number. Try again.");
-                continue; // There is no point in keep validating any further, as it's not even an integer
-            }
-
-            number = Integer.parseInt(numberAsString); // When we reach this point, that means we have a proper integer
-            final boolean invalidInput = number < minValue || maxValue < number; // If the input is valid, based only in minimum & maximum possible values
-            keepAsking = invalidInput;
-            if (keepAsking)
-                System.out.println("You must type an integer number between " + minValue + " and " + maxValue + ". Please try again.");
-        } while (keepAsking);
-        // scanner.close();
-
-        return number;
+        return getInteger(message, minValue, maxValue, true, "", new ArrayList<>());
     }
 
     // Receives and validates a double number from the console
@@ -217,7 +154,7 @@ final public class TerminalHelper {
         Scanner scanner = new Scanner(System.in);
 
         do {
-            System.out.print(message + (showRange ? (" (" + minValue.toString() + " - " + maxValue.toString() + ")") : "") + ": ");
+            System.out.print(message + (showRange ? (" (" + minValue + " - " + maxValue + ")") : "") + ": ");
             String numberAsString = scanner.nextLine();  // Value typed by the user, that can be a valid (integer or floating point) number or not
 
             if (!isInteger(numberAsString) || !isFloatingPoint(numberAsString)) {
@@ -240,80 +177,17 @@ final public class TerminalHelper {
 
     // Receives and validates a double number from the console
     public static double getDouble(final String message, final Double minValue, final Double maxValue, final boolean showRange, final String errorMessage) {
-        double number = 0; // Double conversion (if possible) of the value typed by the user
-        boolean keepAsking = true; // If we must keep asking for a value to the user, until receiving an integer
-        Scanner scanner = new Scanner(System.in);
-
-        do {
-            System.out.print(message + (showRange ? (" (" + minValue.toString() + " - " + maxValue.toString() + ")") : "") + ": ");
-            String numberAsString = scanner.nextLine();  // Value typed by the user, that can be a valid (integer or floating point) number or not
-
-            if (!isInteger(numberAsString) || !isFloatingPoint(numberAsString)) {
-                System.out.println("That's not an integer number nor a valid floating point number. Try again.");
-                continue; // There is no point in keep validating any further, as it's not even a valid integer nor a floating point number
-            }
-
-            number = Double.parseDouble(numberAsString); // When we reach this point, that means we have a proper integer or a floating point number
-            final boolean invalidInput = number < minValue || maxValue < number; // If the input is valid, based only in minimum & maximum possible values
-            keepAsking = invalidInput;
-            if (keepAsking)
-                System.out.println(errorMessage.isBlank() ? "You must type a double number between " + minValue + " and " + maxValue + ". Please try again." : errorMessage);
-        } while (keepAsking);
-        // scanner.close();
-
-        return number;
+        return getDouble(message, minValue, maxValue, showRange, errorMessage, new ArrayList<>());
     }
 
     // Receives and validates a double number from the console
     public static double getDouble(final String message, final Double minValue, final Double maxValue, final boolean showRange) {
-        double number = 0; // Double conversion (if possible) of the value typed by the user
-        boolean keepAsking = true; // If we must keep asking for a value to the user, until receiving an integer
-        Scanner scanner = new Scanner(System.in);
-
-        do {
-            System.out.print(message + (showRange ? (" (" + minValue.toString() + " - " + maxValue.toString() + ")") : "") + ": ");
-            String numberAsString = scanner.nextLine();  // Value typed by the user, that can be a valid (integer or floating point) number or not
-
-            if (!isInteger(numberAsString) || !isFloatingPoint(numberAsString)) {
-                System.out.println("That's not an integer number nor a valid floating point number. Try again.");
-                continue; // There is no point in keep validating any further, as it's not even a valid integer nor a floating point number
-            }
-
-            number = Double.parseDouble(numberAsString); // When we reach this point, that means we have a proper integer or a floating point number
-            final boolean invalidInput = number < minValue || maxValue < number; // If the input is valid, based only in minimum & maximum possible values
-            keepAsking = invalidInput;
-            if (keepAsking)
-                System.out.println("You must type a double number between " + minValue + " and " + maxValue + ". Please try again.");
-        } while (keepAsking);
-        // scanner.close();
-
-        return number;
+        return getDouble(message, minValue, maxValue, showRange, "", new ArrayList<>());
     }
 
     // Receives and validates a double number from the console
     public static double getDouble(final String message, final Double minValue, final Double maxValue) {
-        double number = 0; // Double conversion (if possible) of the value typed by the user
-        boolean keepAsking = true; // If we must keep asking for a value to the user, until receiving an integer
-        Scanner scanner = new Scanner(System.in);
-
-        do {
-            System.out.print(message + " (" + minValue.toString() + " - " + maxValue.toString() + "): ");
-            String numberAsString = scanner.nextLine();  // Value typed by the user, that can be a valid (integer or floating point) number or not
-
-            if (!isInteger(numberAsString) || !isFloatingPoint(numberAsString)) {
-                System.out.println("That's not an integer number nor a valid floating point number. Try again.");
-                continue; // There is no point in keep validating any further, as it's not even a valid integer nor a floating point number
-            }
-
-            number = Double.parseDouble(numberAsString); // When we reach this point, that means we have a proper integer or a floating point number
-            final boolean invalidInput = number < minValue || maxValue < number; // If the input is valid, based only in minimum & maximum possible values
-            keepAsking = invalidInput;
-            if (keepAsking)
-                System.out.println("You must type a double number between " + minValue + " and " + maxValue + ". Please try again.");
-        } while (keepAsking);
-        // scanner.close();
-
-        return number;
+        return getDouble(message, minValue, maxValue, true, "", new ArrayList<>());
     }
 
     // Receives and validates a char from the console
@@ -342,26 +216,7 @@ final public class TerminalHelper {
 
     // Receives and validates a char from the console
     public static char getAlphaChar(final String message) {
-        char character = 'A'; // Char conversion (if possible) of the value typed by the user
-        boolean isNotAlphaCharacter = true; // If the character is alphabetic
-        Scanner scanner = new Scanner(System.in);
-
-        do {
-            System.out.print(message + ": ");
-            String characterAsString = scanner.nextLine();  // Value typed by the user, that can be a char or not
-
-            if (!containsSingleChar(characterAsString)) {
-                System.out.println("That's not a single character. Try again.");
-                continue; // There is no point in keep validating any further, as it's not even a valid char
-            }
-
-            character = characterAsString.charAt(0);
-            isNotAlphaCharacter = !Character.isLetter(character);
-            if (isNotAlphaCharacter)
-                System.out.println("You must type a valid single character. Please try again.");
-        } while (isNotAlphaCharacter);
-
-        return character;
+        return getAlphaChar(message, "");
     }
 
     // Gets a string with or without spaces, from the terminal, as a response of a given question
@@ -384,7 +239,7 @@ final public class TerminalHelper {
             final boolean invalidInput = typedInput.length() < minLength || maxLength < typedInput.length(); // If the string input is valid, based only in minimum & maximum possible lengths
             keepAsking = invalidInput;
             if (keepAsking)
-                System.out.println(errorMessage.isBlank() ? "You must type a valid string, with a length between number between " + minLength + " and " + maxLength + ". Please try again." : errorMessage);
+                System.out.println(errorMessage.isBlank() ? "You must type a valid none-empty string, with a length between " + minLength + " and " + maxLength + ". Please try again." : errorMessage);
         } while (keepAsking);
 
         return typedInput;
@@ -392,54 +247,12 @@ final public class TerminalHelper {
 
     // Gets a string with or without spaces, from the terminal, as a response of a given question
     public static String getStringFromMessage(final String message, int minLength, int maxLength, final boolean showRange) {
-        String typedInput;
-        boolean keepAsking = true; // If we must keep asking for a value to the user, until receiving an integer
-        Scanner scanner = new Scanner(System.in);
-
-        do {
-            System.out.print(message + (showRange ? (" (" + minLength + " - " + maxLength + " characters)") : "") + ": ");
-
-            typedInput = scanner.nextLine();  // Value typed by the user, that can be a char or not
-
-            if (typedInput.isBlank()) {
-                System.out.println("That's not a valid string. Try again.");
-                continue; // There is no point in keep validating any further, as it's not even a valid none-empty string
-            }
-
-            // When we reach this point, that means we have at least a none-empty string
-            final boolean invalidInput = typedInput.length() < minLength || maxLength < typedInput.length(); // If the string input is valid, based only in minimum & maximum possible lengths
-            keepAsking = invalidInput;
-            if (keepAsking)
-                System.out.println("You must type a valid string, with a length between number between " + minLength + " and " + maxLength + ". Please try again.");
-        } while (keepAsking);
-
-        return typedInput;
+        return getStringFromMessage(message, minLength, maxLength, showRange, "");
     }
 
     // Gets a string with or without spaces, from the terminal, as a response of a given question
     public static String getStringFromMessage(final String message, int minLength, int maxLength) {
-        String typedInput;
-        boolean keepAsking = true; // If we must keep asking for a value to the user, until receiving an integer
-        Scanner scanner = new Scanner(System.in);
-
-        do {
-            System.out.print(message + " (" + minLength + " - " + maxLength + " characters): ");
-
-            typedInput = scanner.nextLine();  // Value typed by the user, that can be a char or not
-
-            if (typedInput.isBlank()) {
-                System.out.println("That's not a valid string. Try again.");
-                continue; // There is no point in keep validating any further, as it's not even a valid none-empty string
-            }
-
-            // When we reach this point, that means we have at least a none-empty string
-            final boolean invalidInput = typedInput.length() < minLength || maxLength < typedInput.length(); // If the string input is valid, based only in minimum & maximum possible lengths
-            keepAsking = invalidInput;
-            if (keepAsking)
-                System.out.println("You must type a valid string, with a length between number between " + minLength + " and " + maxLength + ". Please try again.");
-        } while (keepAsking);
-
-        return typedInput;
+        return getStringFromMessage(message, minLength, maxLength, true, "");
     }
 
     // Gets a string with or without spaces, from the terminal, as a response of a given question
@@ -470,17 +283,6 @@ final public class TerminalHelper {
 
     // Gets a string with or without spaces, from the terminal, as a response of a given question
     public static String getStringFromMessage(final String message) {
-        String typedInput;
-        Scanner scanner = new Scanner(System.in);
-
-        do {
-            System.out.print(message + ": ");
-            typedInput = scanner.nextLine();  // Value typed by the user, that can be empty or not
-
-            if (typedInput.isBlank())
-                System.out.println("You must type a valid none-empty string. Please try again.");
-        } while (typedInput.isBlank());
-
-        return typedInput;
+        return getStringFromMessage(message, 1, Integer.MAX_VALUE, false, "");
     }
 }
