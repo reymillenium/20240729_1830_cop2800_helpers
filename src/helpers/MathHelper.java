@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * MathHelper (Version 2024.07.29.2322)
+ * MathHelper (Version 2024.07.30.1931)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -187,6 +187,21 @@ public class MathHelper {
         }
 
         return number + additive;
+    }
+
+    // Returns the string grammatical representation of an ordinal number, from a given int number, even if is negative
+    public static String neatOrdinalFromNumber(final int number) {
+        final int lastDigit = Math.abs(number % 10);
+        return number + switch (Math.abs(number)) {
+            case 11, 12, 13 -> "th";
+            default -> switch (lastDigit) {
+                case 1 -> "st";
+                case 2 -> "nd";
+                case 3 -> "rd";
+                default -> "th";
+            };
+        };
+
     }
 
     // Determines is a given int number is prime or not
