@@ -54,25 +54,14 @@ final public class DateTimeHelper {
     public static String convertTimeToCivilian(final String militaryTime) { //Ex: 0012, 1200, 0631
         int militaryHours = Integer.parseInt(militaryTime.substring(0, 2));
         int minutes = Integer.parseInt(militaryTime.substring(2, 4));
+        return convertTimeToCivilian(militaryHours, minutes);
+    }
 
-        String meridian;
-        int civilianHours;
-
-        // Handle midnight and noon
-        if (militaryHours == 0) {
-            civilianHours = 12;
-            meridian = "AM";
-        } else if (militaryHours == 12) {
-            civilianHours = 12;
-            meridian = "PM";
-        } else if (militaryHours < 12) {
-            civilianHours = militaryHours;
-            meridian = "AM";
-        } else {
-            civilianHours = militaryHours - 12;
-            meridian = "PM";
-        }
-
-        return civilianHours + ":" + (minutes < 10 ? "0" : "") + minutes + " " + meridian;
+    // Determines if the given year ois leap or not
+    public static boolean isLeapYear(int year) {
+        if (year < 1 || 9999 < year) return false;
+        if (year % 4 != 0) return false;
+        if (year % 100 != 0) return true;
+        return year % 400 == 0;
     }
 }
