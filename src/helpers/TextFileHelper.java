@@ -51,7 +51,7 @@ final public class TextFileHelper {
     }
 
     // Adds text to a .txt file only if it already exists
-    static public void addTextToExistingFile(final String fileName) {
+    public static void addTextToExistingFile(final String fileName) {
         try {
             if (fileExist(fileName)) {
                 FileWriter writer = new FileWriter(fileName, true);
@@ -67,7 +67,7 @@ final public class TextFileHelper {
     }
 
     // Either creates a .txt file and adds text to it, or adds to an existent one
-    static public void addTextToFile(final String fileName) {
+    public static void addTextToFile(final String fileName) {
         try {
             FileWriter writer = new FileWriter(fileName, true);
             final String textLine = TerminalHelper.getStringFromMessage("Write a single line of text please: ");
@@ -81,7 +81,7 @@ final public class TextFileHelper {
     }
 
     // Either creates a .txt file and adds a new line of text to it, or adds to an existent one
-    static public void addTextLineToFile(final String fileName) {
+    public static void addTextLineToFile(final String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
             final String textLine = TerminalHelper.getStringFromMessage("Write a single line of text please: ");
             writer.write(textLine);

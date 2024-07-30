@@ -30,7 +30,7 @@ import java.util.Random;
 
 public class DatabaseHelper {
     // Generates a Universally Unique IDentifier (the usual 36-character alphanumeric string. UUID style) as a string. Format: bdc0a2fb-d39e-0242-9a0a-4e760153f18d
-    static public String getUUID() {
+    public static String getUUID() {
         int min = 0; // Minimum value of the range (inclusive)
         int max = 15; // Maximum value of the range (inclusive)
         Random random = new Random();

@@ -28,7 +28,7 @@ package helpers;
 
 final public class DateTimeHelper {
     // Function to convert from a military Time (24 hours format) to civilian Time (12 hours format with meridian)
-    static public String convertTimeToCivilian(final int militaryHours, final int minutes) {
+    public static String convertTimeToCivilian(final int militaryHours, final int minutes) {
         String meridian;
         int civilianHours;
 
@@ -51,7 +51,7 @@ final public class DateTimeHelper {
     }
 
     // Function to convert from a military Time (24 hours format) to civilian Time (12 hours format with meridian)
-    static public String convertTimeToCivilian(final String militaryTime) { //Ex: 0012, 1200, 0631
+    public static String convertTimeToCivilian(final String militaryTime) { //Ex: 0012, 1200, 0631
         int militaryHours = Integer.parseInt(militaryTime.substring(0, 2));
         int minutes = Integer.parseInt(militaryTime.substring(2, 4));
 
