@@ -7,7 +7,7 @@
 - ArrayHelper `v2024.07.29.2242`
 - DatabaseHelper `v2024.07.29.0146`
 - DateTimeHelper `v2024.07.29.2210`
-- MathHelper `v2024.07.29.2237`
+- MathHelper `v2024.07.29.2322`
 - TerminalHelper `v2024.07.29.2234`
 - TextFileHelper `v2024.07.29.2214`
 

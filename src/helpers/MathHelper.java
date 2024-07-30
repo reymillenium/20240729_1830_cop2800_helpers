@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * MathHelper (Version 2024.07.29.2237)
+ * MathHelper (Version 2024.07.29.2322)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -199,5 +199,28 @@ public class MathHelper {
         }
 
         return true;
+    }
+
+    // Determines if two doubles are equals after rounding them to a given amount of decimals
+    public static boolean doublesAreEqualsRoundedByNDecimalPlaces(double firstNumber, double secondNumber, int decimalPlaces) {
+        // Rounding the decimals
+        double precisionProduct = Math.pow(10, decimalPlaces); // Keeps as many digits as desired by the user (given precision, though not always can be done, so we need to fix it in another step)
+        double firstRounded = Math.floor(firstNumber * precisionProduct + .5) / precisionProduct; // Like in this for example:  -0.80999 (but our precision is 6, so we need to fix it)
+        double secondRounded = Math.floor(secondNumber * precisionProduct + .5) / precisionProduct; // Like in this for example:  -0.80999 (but our precision is 6, so we need to fix it)
+
+        // Adjusting the rounded decimals
+        String format = "%." + decimalPlaces + "f"; // Example: "%.6f"
+        String firstAccurateAsString = String.format(format, firstRounded); // We keep the desired precision no matter what. Final state: -0.80999 -> -0.809990 (with a 6 digits precision, exactly as desired by the user)
+        String secondAccurateAsString = String.format(format, secondRounded); // We keep the desired precision no matter what. Final state: -0.80999 -> -0.809990 (with a 6 digits precision, exactly as desired by the user)
+
+        return firstAccurateAsString.equals(secondAccurateAsString);
+    }
+
+    // Determines if two doubles are equals after trimming them to a given amount of decimals
+    public static boolean doublesAreEqualsByNDecimalPlaces(double firstNumber, double secondNumber, int decimalPlaces) {
+        double precisionProduct = Math.pow(10, decimalPlaces);
+        double firstRounded = (firstNumber < 0 ? Math.ceil(firstNumber * precisionProduct) : Math.floor(firstNumber * precisionProduct)) / precisionProduct;
+        double secondRounded = (secondNumber < 0 ? Math.ceil(secondNumber * precisionProduct) : Math.floor(secondNumber * precisionProduct)) / precisionProduct;
+        return firstRounded == secondRounded;
     }
 }
