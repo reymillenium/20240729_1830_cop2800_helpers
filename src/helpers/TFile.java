@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * TextFileHelper (Version 2024.07.29.2214)
+ * TFile (Version 2024.07.29.2214)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-final public class TextFileHelper {
+final public class TFile {
     // Detects if a given filename exist or not
     public static boolean fileExist(final String fileName) {
         return new File(fileName).exists();

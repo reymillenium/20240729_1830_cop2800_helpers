@@ -6,11 +6,11 @@
 
 - JHArray `v2024.07.29.2242`
 - DatabaseHelper `v2024.07.29.0146`
-- DateTimeHelper `v2024.07.29.2210`
+- Datesy `v2024.07.29.2210`
 - Rangy `v2024.07.31.2057`
 - Mathsy `v2024.07.30.1931`
 - Terminus `v2024.07.29.2234`
-- TextFileHelper `v2024.07.29.2214`
+- TFile `v2024.07.29.2214`
 
 ## Compatibility:
 
@@ -26,9 +26,16 @@ OpenJDK 64-Bit Server VM Homebrew (build 20, mixed mode, sharing)
 Ready to use customized collection of helper classes, containing many static & public utility functions. All of
 them custom-made and ready to use. Just plug and play.
 
+### JHArray
+
+### DatabaseHelper
+
+### Datesy
+
 ### Rangy
 
-Rangy is a super light version of the class Range, included as part of the Google Guava Package[].
+Rangy is a super light version of the class [Range](https://github.com/google/guava/wiki/RangesExplained), included as
+part of the Google Guava Package.
 
 - [a..b] = {x | a <= x <= b}
 - [a..b) = {x | a <= x < b}
@@ -51,7 +58,13 @@ Rangy is a super light version of the class Range, included as part of the Googl
 | `(-∞..b]`  | `atMost(C)`        |
 | `(-∞..+∞)` | `all()`            |
 
-### Author
+### Mathsy
+
+### Terminus
+
+### TFile
+
+## Author
 
 **Reinier Garcia**
 
