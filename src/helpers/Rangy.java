@@ -27,10 +27,7 @@
 package helpers;
 
 enum CutType {
-    ABOVE_ALL,
-    ABOVE_VALUE,
-    BELOW_VALUE,
-    BELOW_ALL,
+    ABOVE_ALL, ABOVE_VALUE, BELOW_VALUE, BELOW_ALL,
 }
 
 class Bound {
@@ -43,40 +40,31 @@ class Bound {
     }
 
     boolean isLessThan(Number aValue) {
-        if (cutType == CutType.ABOVE_ALL)
-            return false;
-        else if (cutType == CutType.BELOW_ALL)
-            return true;
-        else if (cutType == CutType.ABOVE_VALUE) {
-            final Class<? extends Number> instanceClass = value.getClass();
-            final String className = instanceClass.getName();
+        final Class<? extends Number> instanceClass = value.getClass();
+        final String className = instanceClass.getName();
 
-            return switch (className) {
+        return switch (cutType) {
+            case ABOVE_ALL -> false;
+            case BELOW_ALL -> true;
+            case ABOVE_VALUE -> switch (className) {
                 case "java.lang.Byte" -> value.byteValue() < aValue.byteValue();
                 case "java.lang.Short" -> value.shortValue() < aValue.shortValue();
                 case "java.lang.Integer" -> value.intValue() < aValue.intValue();
                 case "java.lang.Long" -> value.longValue() < aValue.longValue();
                 case "java.lang.Float" -> value.floatValue() < aValue.floatValue();
                 case "java.lang.Double" -> value.doubleValue() < aValue.doubleValue();
-                default -> throw new IllegalStateException("Unexpected value: " + className);
+                default -> throw new IllegalStateException("Unexpected value: " + value + " of class name " + className);
             };
-        } else if (cutType == CutType.BELOW_VALUE) {
-            final Class<? extends Number> instanceClass = value.getClass();
-            final String className = instanceClass.getName();
-
-            return switch (className) {
+            case BELOW_VALUE -> switch (className) {
                 case "java.lang.Byte" -> value.byteValue() <= aValue.byteValue();
                 case "java.lang.Short" -> value.shortValue() <= aValue.shortValue();
                 case "java.lang.Integer" -> value.intValue() <= aValue.intValue();
                 case "java.lang.Long" -> value.longValue() <= aValue.longValue();
                 case "java.lang.Float" -> value.floatValue() <= aValue.floatValue();
                 case "java.lang.Double" -> value.doubleValue() <= aValue.doubleValue();
-                default -> throw new IllegalStateException("Unexpected value: " + className);
+                default -> throw new IllegalStateException("Unexpected value: " + value + " of class name " + className);
             };
-        }
-
-        System.out.println("We should not be here ");
-        return false;
+        };
     }
 }
 
