@@ -48,39 +48,31 @@ class Bound {
         else if (cutType == CutType.BELOW_ALL)
             return true;
         else if (cutType == CutType.ABOVE_VALUE) {
-            Class<? extends Number> instanceClass = value.getClass();
-            String className = instanceClass.getName();
-            switch (className) {
-                case "java.lang.Byte":
-                    return value.byteValue() < aValue.byteValue();
-                case "java.lang.Short":
-                    return value.shortValue() < aValue.shortValue();
-                case "java.lang.Integer":
-                    return value.intValue() < aValue.intValue();
-                case "java.lang.Long":
-                    return value.longValue() < aValue.longValue();
-                case "java.lang.Float":
-                    return value.floatValue() < aValue.floatValue();
-                case "java.lang.Double":
-                    return value.doubleValue() < aValue.doubleValue();
-            }
+            final Class<? extends Number> instanceClass = value.getClass();
+            final String className = instanceClass.getName();
+
+            return switch (className) {
+                case "java.lang.Byte" -> value.byteValue() < aValue.byteValue();
+                case "java.lang.Short" -> value.shortValue() < aValue.shortValue();
+                case "java.lang.Integer" -> value.intValue() < aValue.intValue();
+                case "java.lang.Long" -> value.longValue() < aValue.longValue();
+                case "java.lang.Float" -> value.floatValue() < aValue.floatValue();
+                case "java.lang.Double" -> value.doubleValue() < aValue.doubleValue();
+                default -> throw new IllegalStateException("Unexpected value: " + className);
+            };
         } else if (cutType == CutType.BELOW_VALUE) {
-            Class<? extends Number> instanceClass = value.getClass();
-            String className = instanceClass.getName();
-            switch (className) {
-                case "java.lang.Byte":
-                    return value.byteValue() <= aValue.byteValue();
-                case "java.lang.Short":
-                    return value.shortValue() <= aValue.shortValue();
-                case "java.lang.Integer":
-                    return value.intValue() <= aValue.intValue();
-                case "java.lang.Long":
-                    return value.longValue() <= aValue.longValue();
-                case "java.lang.Float":
-                    return value.floatValue() <= aValue.floatValue();
-                case "java.lang.Double":
-                    return value.doubleValue() <= aValue.doubleValue();
-            }
+            final Class<? extends Number> instanceClass = value.getClass();
+            final String className = instanceClass.getName();
+
+            return switch (className) {
+                case "java.lang.Byte" -> value.byteValue() <= aValue.byteValue();
+                case "java.lang.Short" -> value.shortValue() <= aValue.shortValue();
+                case "java.lang.Integer" -> value.intValue() <= aValue.intValue();
+                case "java.lang.Long" -> value.longValue() <= aValue.longValue();
+                case "java.lang.Float" -> value.floatValue() <= aValue.floatValue();
+                case "java.lang.Double" -> value.doubleValue() <= aValue.doubleValue();
+                default -> throw new IllegalStateException("Unexpected value: " + className);
+            };
         }
 
         System.out.println("We should not be here ");
@@ -110,12 +102,12 @@ public class Rangy {
     }
 
     // [a..b]	{x | a <= x <= b}
-    public static  Rangy closed(Number lower, Number upper) {
+    public static Rangy closed(Number lower, Number upper) {
         return create(new Bound(lower, CutType.BELOW_VALUE), new Bound(upper, CutType.ABOVE_VALUE));
     }
 
     // [a..b)	{x | a <= x < b}
-    public static  Rangy closedOpen(Number lower, Number upper) {
+    public static Rangy closedOpen(Number lower, Number upper) {
         return create(new Bound(lower, CutType.BELOW_VALUE), new Bound(upper, CutType.BELOW_VALUE));
     }
 

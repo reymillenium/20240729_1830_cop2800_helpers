@@ -26,11 +26,13 @@ OpenJDK 64-Bit Server VM Homebrew (build 20, mixed mode, sharing)
 Ready to use customized collection of helper classes, containing many static & public utility functions. All of
 them custom-made and ready to use. Just plug and play.
 
-### JHArray
-
 ### DatabaseHelper
 
 ### Datesy
+
+### JHArray
+
+### Mathsy
 
 ### Rangy
 
@@ -57,8 +59,6 @@ part of the Google Guava Package.
 | `(-∞..b)`  | `lessThan(C)`      |
 | `(-∞..b]`  | `atMost(C)`        |
 | `(-∞..+∞)` | `all()`            |
-
-### Mathsy
 
 ### Terminus
 
