@@ -1,9 +1,9 @@
 /*
  * MIT License
  *
- * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
+ * Copyright (c) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * Rangy (Version 2024.07.31.2057)
+ * Rangy (Version  2024.8.1.923)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,49 +25,6 @@
  */
 
 package helpers;
-
-enum CutType {
-    ABOVE_ALL, ABOVE_VALUE, BELOW_VALUE, BELOW_ALL,
-}
-
-class Bound {
-    Number value;
-    CutType cutType;
-
-    public Bound(Number value, CutType type) {
-        this.value = value;
-        this.cutType = type;
-    }
-
-    boolean isLessThan(Number aValue) {
-        final Class<? extends Number> instanceClass = value.getClass();
-        final String className = instanceClass.getName();
-
-        return switch (cutType) {
-            case ABOVE_ALL -> false;
-            case BELOW_ALL -> true;
-            case ABOVE_VALUE -> switch (className) {
-                case "java.lang.Byte" -> value.byteValue() < aValue.byteValue();
-                case "java.lang.Short" -> value.shortValue() < aValue.shortValue();
-                case "java.lang.Integer" -> value.intValue() < aValue.intValue();
-                case "java.lang.Long" -> value.longValue() < aValue.longValue();
-                case "java.lang.Float" -> value.floatValue() < aValue.floatValue();
-                case "java.lang.Double" -> value.doubleValue() < aValue.doubleValue();
-                default -> throw new IllegalStateException("Unexpected value: " + value + " of class name " + className);
-            };
-            case BELOW_VALUE -> switch (className) {
-                case "java.lang.Byte" -> value.byteValue() <= aValue.byteValue();
-                case "java.lang.Short" -> value.shortValue() <= aValue.shortValue();
-                case "java.lang.Integer" -> value.intValue() <= aValue.intValue();
-                case "java.lang.Long" -> value.longValue() <= aValue.longValue();
-                case "java.lang.Float" -> value.floatValue() <= aValue.floatValue();
-                case "java.lang.Double" -> value.doubleValue() <= aValue.doubleValue();
-                default -> throw new IllegalStateException("Unexpected value: " + value + " of class name " + className);
-            };
-        };
-    }
-}
-
 
 public class Rangy {
     // Instance Attributes
@@ -127,5 +84,47 @@ public class Rangy {
     // Instance Method
     public boolean contains(Number value) {
         return this.lowerBound.isLessThan(value) && !this.upperBound.isLessThan(value);
+    }
+}
+
+enum CutType {
+    ABOVE_ALL, ABOVE_VALUE, BELOW_VALUE, BELOW_ALL,
+}
+
+class Bound {
+    Number value;
+    CutType cutType;
+
+    public Bound(Number value, CutType type) {
+        this.value = value;
+        this.cutType = type;
+    }
+
+    boolean isLessThan(Number aValue) {
+        final Class<? extends Number> instanceClass = value.getClass();
+        final String className = instanceClass.getName();
+
+        return switch (cutType) {
+            case ABOVE_ALL -> false;
+            case BELOW_ALL -> true;
+            case ABOVE_VALUE -> switch (className) {
+                case "java.lang.Byte" -> value.byteValue() < aValue.byteValue();
+                case "java.lang.Short" -> value.shortValue() < aValue.shortValue();
+                case "java.lang.Integer" -> value.intValue() < aValue.intValue();
+                case "java.lang.Long" -> value.longValue() < aValue.longValue();
+                case "java.lang.Float" -> value.floatValue() < aValue.floatValue();
+                case "java.lang.Double" -> value.doubleValue() < aValue.doubleValue();
+                default -> throw new IllegalStateException("Unexpected value: " + value + " of class name " + className);
+            };
+            case BELOW_VALUE -> switch (className) {
+                case "java.lang.Byte" -> value.byteValue() <= aValue.byteValue();
+                case "java.lang.Short" -> value.shortValue() <= aValue.shortValue();
+                case "java.lang.Integer" -> value.intValue() <= aValue.intValue();
+                case "java.lang.Long" -> value.longValue() <= aValue.longValue();
+                case "java.lang.Float" -> value.floatValue() <= aValue.floatValue();
+                case "java.lang.Double" -> value.doubleValue() <= aValue.doubleValue();
+                default -> throw new IllegalStateException("Unexpected value: " + value + " of class name " + className);
+            };
+        };
     }
 }
