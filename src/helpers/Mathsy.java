@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * MathHelper (Version 2024.07.30.1931)
+ * Mathsy (Version 2024.07.30.1931)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@
 
 package helpers;
 
-public class MathHelper {
+public class Mathsy {
     // Formats a given negative or positive Integer by inserting a comma every 3 digits of its equivalent string, to make it more readable, by US standards
     public static String humanizeInteger(final Integer integerValue) {
         final boolean isNegative = integerValue < 0;

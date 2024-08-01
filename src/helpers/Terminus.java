@@ -32,7 +32,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-final public class TerminalHelper {
+final public class Terminus {
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // *                                                         *
     // *                    TERMINAL PRINTERS                    *

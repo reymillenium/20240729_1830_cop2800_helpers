@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * Rangy (Version 2024.07.21.2041)
+ * Rangy (Version 2024.07.31.2057)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -89,7 +89,7 @@ class Bound {
 }
 
 
-public class Rangy<C extends Comparable> {
+public class Rangy {
     // Instance Attributes
     Bound upperBound = null;
     Bound lowerBound = null;
@@ -100,47 +100,47 @@ public class Rangy<C extends Comparable> {
         this.upperBound = upperBound;
     }
 
-    static <C extends Comparable<?>> Rangy<C> create(Bound lowerBound, Bound upperBound) {
-        return new Rangy<>(lowerBound, upperBound);
+    static Rangy create(Bound lowerBound, Bound upperBound) {
+        return new Rangy(lowerBound, upperBound);
     }
 
     // (a..b)	{x | a < x < b}
-    public static <C extends Comparable<?>> Rangy<C> open(Number lower, Number upper) {
+    public static Rangy open(Number lower, Number upper) {
         return create(new Bound(lower, CutType.ABOVE_VALUE), new Bound(upper, CutType.BELOW_VALUE));
     }
 
     // [a..b]	{x | a <= x <= b}
-    public static <C extends Comparable<?>> Rangy<C> closed(Number lower, Number upper) {
+    public static  Rangy closed(Number lower, Number upper) {
         return create(new Bound(lower, CutType.BELOW_VALUE), new Bound(upper, CutType.ABOVE_VALUE));
     }
 
     // [a..b)	{x | a <= x < b}
-    public static <C extends Comparable<?>> Rangy<C> closedOpen(Number lower, Number upper) {
+    public static  Rangy closedOpen(Number lower, Number upper) {
         return create(new Bound(lower, CutType.BELOW_VALUE), new Bound(upper, CutType.BELOW_VALUE));
     }
 
     // (a..b]	{x | a < x <= b}
-    public static <C extends Comparable<?>> Rangy<C> openClosed(Number lower, Number upper) {
+    public static Rangy openClosed(Number lower, Number upper) {
         return create(new Bound(lower, CutType.ABOVE_VALUE), new Bound(upper, CutType.ABOVE_VALUE));
     }
 
     // (-∞..b)	{x | x < b}
-    public static <C extends Comparable<?>> Rangy<C> lessThan(Number endPoint) {
+    public static Rangy lessThan(Number endPoint) {
         return create(new Bound(null, CutType.BELOW_ALL), new Bound(endPoint, CutType.BELOW_VALUE));
     }
 
     // (a..+∞)	{x | x > a}
-    public static <C extends Comparable<?>> Rangy<C> greaterThan(Number endPoint) {
+    public static Rangy greaterThan(Number endPoint) {
         return create(new Bound(endPoint, CutType.ABOVE_VALUE), new Bound(null, CutType.ABOVE_ALL));
     }
 
     // (-∞..b]	{x | x <= b}
-    public static <C extends Comparable<?>> Rangy<C> atMost(Number endPoint) {
+    public static Rangy atMost(Number endPoint) {
         return create(new Bound(null, CutType.BELOW_ALL), new Bound(endPoint, CutType.ABOVE_VALUE));
     }
 
     // [a..+∞)	{x | x >= a}
-    public static <C extends Comparable<?>> Rangy<C> atLeast(Number endPoint) {
+    public static Rangy atLeast(Number endPoint) {
         return create(new Bound(endPoint, CutType.BELOW_VALUE), new Bound(null, CutType.ABOVE_ALL));
     }
 

@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * ArrayHelper (Version 2024.07.29.2242)
+ * JHArray (Version 2024.07.29.2242)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ package helpers;
 
 import java.util.Arrays;
 
-public class ArrayHelper {
+public class JHArray {
     // Calculates the sum of all the elements inside an array of integers
     public static int simpleSumOfIntegersInArray(final int[] integersArray) {
         int sum = 0;

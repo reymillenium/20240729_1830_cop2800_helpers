@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * DateTimeHelper (Version 2024.07.29.2210)
+ * Datesy (Version 2024.07.29.2210)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@
 
 package helpers;
 
-final public class DateTimeHelper {
+final public class Datesy {
     // Function to convert from a military Time (24 hours format) to civilian Time (12 hours format with meridian)
     public static String convertTimeToCivilian(final int militaryHours, final int minutes) {
         String meridian;

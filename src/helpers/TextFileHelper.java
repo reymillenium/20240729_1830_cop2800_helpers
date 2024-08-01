@@ -54,7 +54,7 @@ final public class TextFileHelper {
     public static void addTextToFile(final String fileName) {
         try {
             FileWriter writer = new FileWriter(fileName, true);
-            final String textLine = TerminalHelper.getStringFromMessage("Write a single line of text please: ");
+            final String textLine = Terminus.getStringFromMessage("Write a single line of text please: ");
             writer.write(textLine);
             writer.close();
         } catch (IOException e) {
@@ -72,7 +72,7 @@ final public class TextFileHelper {
     // Either creates a .txt file and adds a new line of text to it, or adds to an existent one
     public static void addTextLineToFile(final String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
-            final String textLine = TerminalHelper.getStringFromMessage("Write a single line of text please: ");
+            final String textLine = Terminus.getStringFromMessage("Write a single line of text please: ");
             writer.write(textLine);
             writer.newLine(); // Add a new line character
         } catch (IOException e) {
