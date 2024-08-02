@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * Mathsy (Version 2024.08.02.0017)
+ * Mathsy (Version 2024.08.02.0154)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,8 @@
  */
 
 package helpers;
+
+import java.util.ArrayList;
 
 public class Mathsy {
     // Formats a given negative or positive Integer by inserting a comma every 3 digits of its equivalent string, to make it more readable, by US standards
@@ -209,8 +211,7 @@ public class Mathsy {
         if (value <= 1) return false;
 
         for (int i = 2; i <= value / 2; i++) {
-            if (value % i == 0)
-                return false;
+            if (value % i == 0) return false;
         }
 
         return true;
@@ -287,5 +288,29 @@ public class Mathsy {
             if (isEven) sum += digit;
         }
         return sum;
+    }
+
+    // Gets all the factors of a given positive int. Ex: 6 -> [1, 2, 3. 6] or 15 -> [1, 3, 5, 15] or -6 -> []
+    public static ArrayList<Integer> getFactors(int number) {
+        ArrayList<Integer> results = new ArrayList<>();
+
+        if (number > 0) {
+            for (int i = 1; i <= number; i++) {
+                if (number % i == 0) results.add(i);
+            }
+        }
+
+        return results;
+    }
+
+    // Gets all the factors of a given int. Ex: 6 -> [1, 2, 3, 6] or 15 -> [1, 3, 5, 15] or -6 -> [1, 2, 3, 6]
+    public static ArrayList<Integer> getAbsFactors(int number) {
+        ArrayList<Integer> results = new ArrayList<>();
+
+        for (int i = 1; i <= Math.abs(number); i++) {
+            if (number % i == 0) results.add(i);
+        }
+
+        return results;
     }
 }
