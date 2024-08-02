@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * Rangy (Version 2024.08.01.0936)
+ * Rangy (Version 2024.08.02.0108)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,8 @@
  */
 
 package helpers;
+
+import java.util.List;
 
 public class Rangy {
     // Instance Attributes
@@ -81,9 +83,24 @@ public class Rangy {
         return create(new Bound(endPoint, CutType.BELOW_VALUE), new Bound(null, CutType.ABOVE_ALL));
     }
 
-    // Instance Method
+    // Instance Methods
     public boolean contains(Number value) {
         return this.lowerBound.isLessThan(value) && !this.upperBound.isLessThan(value);
+    }
+
+    public boolean containsAll(Number[] values) {
+        if (values.length == 0) return false;
+
+        boolean result = true;
+
+        for (Number value : values) {
+            if (!this.contains(value)) {
+                result = false;
+                break;
+            }
+        }
+
+        return result;
     }
 }
 

@@ -30,7 +30,6 @@
  * For more information, please refer to <http://unlicense.org>
  */
 
-
 import helpers.*;
 
 
@@ -44,6 +43,8 @@ public class Main {
         System.out.println("openRange.contains(4) = " + openRange.contains(4));
         System.out.println("openRange.contains(5) = " + openRange.contains(5));
         System.out.println("openRange.contains(6) = " + openRange.contains(6));
+        System.out.println("openRange.containsAll(new Number[]{1, 2, 3}) = " + openRange.containsAll(new Number[]{1, 2, 3}));
+        System.out.println("openRange.containsAll(new Number[]{2, 3, 4}) = " + openRange.containsAll(new Number[]{2, 3, 4}));
 
         System.out.println(" ");
 
@@ -124,7 +125,7 @@ public class Main {
 
         System.out.println(" ");
 
-//        Rangy<Double> atLeastRange2 = Rangy.atLeast(3);
+        //        Rangy<Double> atLeastRange2 = Rangy.atLeast(3);
     }
 }
 
