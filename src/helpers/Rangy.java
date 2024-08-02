@@ -101,30 +101,37 @@ class Bound {
     }
 
     boolean isLessThan(Number aValue) {
-        final Class<? extends Number> instanceClass = value.getClass();
-        final String className = instanceClass.getName();
-
         return switch (cutType) {
             case ABOVE_ALL -> false;
             case BELOW_ALL -> true;
-            case ABOVE_VALUE -> switch (className) {
-                case "java.lang.Byte" -> value.byteValue() < aValue.byteValue();
-                case "java.lang.Short" -> value.shortValue() < aValue.shortValue();
-                case "java.lang.Integer" -> value.intValue() < aValue.intValue();
-                case "java.lang.Long" -> value.longValue() < aValue.longValue();
-                case "java.lang.Float" -> value.floatValue() < aValue.floatValue();
-                case "java.lang.Double" -> value.doubleValue() < aValue.doubleValue();
-                default -> throw new IllegalStateException("Unexpected value: " + value + " of class name " + className);
-            };
-            case BELOW_VALUE -> switch (className) {
-                case "java.lang.Byte" -> value.byteValue() <= aValue.byteValue();
-                case "java.lang.Short" -> value.shortValue() <= aValue.shortValue();
-                case "java.lang.Integer" -> value.intValue() <= aValue.intValue();
-                case "java.lang.Long" -> value.longValue() <= aValue.longValue();
-                case "java.lang.Float" -> value.floatValue() <= aValue.floatValue();
-                case "java.lang.Double" -> value.doubleValue() <= aValue.doubleValue();
-                default -> throw new IllegalStateException("Unexpected value: " + value + " of class name " + className);
-            };
+            case ABOVE_VALUE -> {
+                final Class<? extends Number> instanceClass = value.getClass();
+                final String className = instanceClass.getName();
+
+                yield switch (className) {
+                    case "java.lang.Byte" -> value.byteValue() < aValue.byteValue();
+                    case "java.lang.Short" -> value.shortValue() < aValue.shortValue();
+                    case "java.lang.Integer" -> value.intValue() < aValue.intValue();
+                    case "java.lang.Long" -> value.longValue() < aValue.longValue();
+                    case "java.lang.Float" -> value.floatValue() < aValue.floatValue();
+                    case "java.lang.Double" -> value.doubleValue() < aValue.doubleValue();
+                    default -> throw new IllegalStateException("Unexpected value: " + value + " of class name " + className);
+                };
+            }
+            case BELOW_VALUE -> {
+                final Class<? extends Number> instanceClass = value.getClass();
+                final String className = instanceClass.getName();
+
+                yield switch (className) {
+                    case "java.lang.Byte" -> value.byteValue() <= aValue.byteValue();
+                    case "java.lang.Short" -> value.shortValue() <= aValue.shortValue();
+                    case "java.lang.Integer" -> value.intValue() <= aValue.intValue();
+                    case "java.lang.Long" -> value.longValue() <= aValue.longValue();
+                    case "java.lang.Float" -> value.floatValue() <= aValue.floatValue();
+                    case "java.lang.Double" -> value.doubleValue() <= aValue.doubleValue();
+                    default -> throw new IllegalStateException("Unexpected value: " + value + " of class name " + className);
+                };
+            }
         };
     }
 }
