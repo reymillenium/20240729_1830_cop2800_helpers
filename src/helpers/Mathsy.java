@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * Mathsy (Version 2024.08.01.2317)
+ * Mathsy (Version 2024.08.01.2334)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -264,6 +264,14 @@ public class Mathsy {
             reversedString.append(numberAsString.charAt(i));
         }
 
+        return numberAsString.contentEquals(reversedString);
+    }
+
+    // Determines if the absolute value of a given integer is a palindrome number or not. Sign insensitive.
+    public static boolean neatIsPalindrome(int number) {
+        String numberAsString = String.valueOf(Math.abs(number));
+        StringBuilder reversedString = new StringBuilder();
+        numberAsString.chars().mapToObj(Character::toString).forEach(reversedString::append);
         return numberAsString.contentEquals(reversedString);
     }
 }

@@ -4,13 +4,13 @@
 
 ### Package Content:
 
-- JHArray `v2024.07.29.2242`
-- DatabaseHelper `v2024.07.29.0146`
-- Datesy `v2024.07.29.2210`
-- Rangy `v2024.08.01.0936`
-- Mathsy `v2024.08.01.2317`
-- Terminus `v2024.07.29.2234`
-- TFile `v2024.07.29.2214`
+- JHArray
+- DatabaseHelper
+- Datesy
+- Rangy
+- Mathsy
+- Terminus
+- TFile
 
 ## Compatibility:
 
