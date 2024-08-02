@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * Rangy (Version 2024.08.02.0108)
+ * Rangy (Version 2024.08.02.0112)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -84,18 +84,35 @@ public class Rangy {
     }
 
     // Instance Methods
+
+    // Determines if the given Number object is included in the defined Rangy
     public boolean contains(Number value) {
         return this.lowerBound.isLessThan(value) && !this.upperBound.isLessThan(value);
     }
 
+    // Determines if all the number inside the given array of Number objects are included in the defined Rangy
     public boolean containsAll(Number[] values) {
         if (values.length == 0) return false;
-
         boolean result = true;
 
         for (Number value : values) {
             if (!this.contains(value)) {
                 result = false;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    // Determines if any of the numbers inside the given array of Number objects is included in the defined Rangy
+    public boolean containsAny(Number[] values) {
+        if (values.length == 0) return false;
+        boolean result = false;
+
+        for (Number value : values) {
+            if (!this.contains(value)) {
+                result = true;
                 break;
             }
         }
