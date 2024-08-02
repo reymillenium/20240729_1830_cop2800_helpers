@@ -263,8 +263,6 @@ public class Mathsy {
         for (int i = numberAsString.length() - 1; i >= 0; i--) {
             reversedString.append(numberAsString.charAt(i));
         }
-        System.out.println(reversedString);
-        System.out.println(numberAsString);
 
         return numberAsString.contentEquals(reversedString);
     }
