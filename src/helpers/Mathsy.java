@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * Mathsy (Version 2024.08.01.2334)
+ * Mathsy (Version 2024.08.02.0017)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -273,5 +273,19 @@ public class Mathsy {
         StringBuilder reversedString = new StringBuilder();
         numberAsString.chars().mapToObj(Character::toString).forEach(reversedString::append);
         return numberAsString.contentEquals(reversedString);
+    }
+
+    // Returns the sum of all the even digits in a given int number
+    public static int getEvenDigitSum(int number) {
+        if (number < 0) return -1;
+        String numberAsString = String.valueOf(Math.abs(number));
+        int sum = 0;
+
+        for (int i = 0; i < numberAsString.length(); i++) {
+            int digit = Integer.parseInt(numberAsString.charAt(i) + "");
+            boolean isEven = digit % 2 == 0;
+            if (isEven) sum += digit;
+        }
+        return sum;
     }
 }
