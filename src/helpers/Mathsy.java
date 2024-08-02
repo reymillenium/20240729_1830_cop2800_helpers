@@ -1,9 +1,9 @@
 /*
  * MIT License
  *
- * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
+ * Copyright (c) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * Mathsy (Version 2024.07.30.1931)
+ * Mathsy (Version 2024.08.01.2158)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -237,5 +237,21 @@ public class Mathsy {
         double firstRounded = (firstNumber < 0 ? Math.ceil(firstNumber * precisionProduct) : Math.floor(firstNumber * precisionProduct)) / precisionProduct;
         double secondRounded = (secondNumber < 0 ? Math.ceil(secondNumber * precisionProduct) : Math.floor(secondNumber * precisionProduct)) / precisionProduct;
         return firstRounded == secondRounded;
+    }
+
+    // Sums the digits of a given integer number and keeps its sign
+    public static int digitsSum(int number) {
+        if (Math.abs(number) > 9) {
+            return number % 10 + digitsSum(number / 10);
+        }
+        return number;
+    }
+
+    // Sums the digits of the absolute value of given integer, so it does not keep its sign
+    public static int absDigitsSum(int number) {
+        if (Math.abs(number) > 9) {
+            return Math.abs(number % 10) + absDigitsSum(Math.abs(number) / 10);
+        }
+        return Math.abs(number);
     }
 }
