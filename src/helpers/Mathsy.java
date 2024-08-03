@@ -27,6 +27,7 @@
 package helpers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Mathsy {
     // Formats a given negative or positive Integer by inserting a comma every 3 digits of its equivalent string, to make it more readable, by US standards
@@ -312,5 +313,13 @@ public class Mathsy {
         }
 
         return results;
+    }
+
+    // Gets the greatest common divisor (GCD) between two given int numbers
+    public static int getGreatestCommonDivisor(int first, int second) {
+        ArrayList<Integer> firstFactors = getAbsFactors(first);
+        ArrayList<Integer> secondFactors = getAbsFactors(second);
+        secondFactors.retainAll(firstFactors);
+        return Collections.max(secondFactors);
     }
 }
