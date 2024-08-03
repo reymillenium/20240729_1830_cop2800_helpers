@@ -330,4 +330,14 @@ public class Mathsy {
         factors.remove(Integer.valueOf(number));
         return number == factors.stream().mapToInt(a -> a).sum();
     }
+
+    // Gets the largest prime factor of a given int number
+    public static int getLargestPrimeFactor(int number) {
+        if (number < 2) return -1;
+        ArrayList<Integer> primeFactors = new ArrayList<>();
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0 && isPrime(i)) primeFactors.add(i);
+        }
+        return Collections.max(primeFactors);
+    }
 }
