@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * Mathsy (Version 2024.08.02.2114)
+ * Mathsy (Version 2024.08.02.2143)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -321,5 +321,13 @@ public class Mathsy {
         ArrayList<Integer> secondFactors = getAbsFactors(second);
         secondFactors.retainAll(firstFactors);
         return Collections.max(secondFactors);
+    }
+
+    // Determines if a given int number is a perfect number or not (a positive integer which is equal to the sum of its proper positive divisors)
+    public static boolean isPerfectNumber(int number) {
+        if (number < 1) return false;
+        ArrayList<Integer> factors = getAbsFactors(number);
+        factors.remove(Integer.valueOf(number));
+        return number == factors.stream().mapToInt(a -> a).sum();
     }
 }
