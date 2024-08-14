@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * JHArray (Version 2024.08.14.1600)
+ * JHArray (Version 2024.08.14.1947)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -319,5 +319,19 @@ public class JHArray {
         Double[] array = new Double[length];
         Arrays.fill(array, value);
         return array;
+    }
+
+    // Converts an array of int numbers into an array of Integer numbers
+    public static Integer[] intArrayToIntegerArray(int[] intArray) {
+        Integer[] integerArray = new Integer[intArray.length];
+        for (int j = 0; j < intArray.length; j++) {
+            integerArray[j] = intArray[j];
+        }
+        return integerArray;
+    }
+
+    // Converts an array of Integer numbers into an array of int numbers
+    public static int[] integerArrayToIntArray(Integer[] intArray) {
+        return Arrays.stream(intArray).mapToInt(Integer::intValue).toArray();
     }
 }
