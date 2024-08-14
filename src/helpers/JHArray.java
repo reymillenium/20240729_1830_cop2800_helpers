@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * JHArray (Version 2024.08.14.1531)
+ * JHArray (Version 2024.08.14.1600)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -132,8 +132,7 @@ public class JHArray {
         if (length == 1) return highest;
 
         for (int i = 1; i < length; i++) {
-            if (integersArray[i] > highest)
-                highest = integersArray[i];
+            if (integersArray[i] > highest) highest = integersArray[i];
         }
 
         return highest;
@@ -151,8 +150,7 @@ public class JHArray {
         if (length == 1) return lowest;
 
         for (int i = 1; i < length; i++) {
-            if (integersArray[i] < lowest)
-                lowest = integersArray[i];
+            if (integersArray[i] < lowest) lowest = integersArray[i];
         }
 
         return lowest;
@@ -170,8 +168,7 @@ public class JHArray {
         if (length == 1) return highest;
 
         for (int i = 1; i < length; i++) {
-            if (integersArray[i] > highest)
-                highest = integersArray[i];
+            if (integersArray[i] > highest) highest = integersArray[i];
         }
 
         return highest;
@@ -189,8 +186,7 @@ public class JHArray {
         if (length == 1) return lowest;
 
         for (int i = 1; i < length; i++) {
-            if (integersArray[i] < lowest)
-                lowest = integersArray[i];
+            if (integersArray[i] < lowest) lowest = integersArray[i];
         }
 
         return lowest;
@@ -265,28 +261,24 @@ public class JHArray {
         return lowest;
     }
 
-    // Returns an array random Integers numbers, given a minimum and a maximum, and then either sorted or not, asc or desc
+    // Returns an array of random Integer numbers, given a minimum and a maximum, and then either sorted or not, asc or desc
     public static Integer[] getRandomArrayOfIntegersBetween(int length, int min, int max, boolean isSorted, boolean sortedAsc) {
         Integer[] array = new Integer[length];
         for (int i = 0; i < length; i++) {
             array[i] = (int) (Math.random() * (max - min + 1)) + min;
         }
 
-        if (isSorted)
-            if (sortedAsc)
-                Arrays.sort(array);
-            else
-                Arrays.sort(array, Collections.reverseOrder());
+        if (isSorted) Arrays.sort(array, sortedAsc ? null : Collections.reverseOrder());
 
         return array;
     }
 
-    // Returns an array random Integers numbers, given a minimum and a maximum, and then either sorted or not, buy always asc in any case
+    // Returns an array of random Integer numbers, given a minimum and a maximum, and then either sorted or not, buy always asc in any case
     public static Integer[] getRandomArrayOfIntegersBetween(int length, int min, int max, boolean isSorted) {
         return getRandomArrayOfIntegersBetween(length, min, max, isSorted, true);
     }
 
-    // Returns an array random Integers numbers, given a minimum and a maximum, and not sorted at all
+    // Returns an array of random Integer numbers, given a minimum and a maximum, and not sorted at all
     public static Integer[] getRandomArrayOfIntegersBetween(int length, int min, int max) {
         return getRandomArrayOfIntegersBetween(length, min, max, false);
     }
@@ -300,11 +292,7 @@ public class JHArray {
             array[i] = randomValue;
         }
 
-        if (isSorted)
-            if (sortedAsc)
-                Arrays.sort(array);
-            else
-                Arrays.sort(array, Collections.reverseOrder());
+        if (isSorted) Arrays.sort(array, sortedAsc ? null : Collections.reverseOrder());
 
         return array;
     }
@@ -314,8 +302,22 @@ public class JHArray {
         return getRandomArrayOfDoublesBetween(length, min, max, isSorted, true);
     }
 
-    // Returns an array random Double numbers, given a minimum and a maximum, and not sorted at all
+    // Returns an array of random Double numbers, given a minimum and a maximum, and not sorted at all
     public static Double[] getRandomArrayOfDoublesBetween(int length, double min, double max) {
         return getRandomArrayOfDoublesBetween(length, min, max, false);
+    }
+
+    // Returns an array of given length, and filled with a given Integer value
+    public static Integer[] getArrayOfIntegersFilledWithValue(int length, int value) {
+        Integer[] array = new Integer[length];
+        Arrays.fill(array, value);
+        return array;
+    }
+
+    // Returns an array of given length, and filled with a given Double value
+    public static Double[] getArrayOfDoublesFilledWithValue(int length, double value) {
+        Double[] array = new Double[length];
+        Arrays.fill(array, value);
+        return array;
     }
 }

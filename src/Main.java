@@ -127,11 +127,13 @@ public class Main {
         //
         // System.out.println(" ");
 
-        Integer[] randomIntegersArray = JHArray.getRandomArrayOfIntegersBetween(10, 1, 4, true, true);
-        System.out.println(Arrays.toString(randomIntegersArray));
+        // Integer[] randomIntegersArray = JHArray.getRandomArrayOfIntegersBetween(10, 1, 8, true, true);
+        // System.out.println(Arrays.toString(randomIntegersArray));
 
-        Double[] randomDoublesArray = JHArray.getRandomArrayOfDoublesBetween(10, 1.3, 4.6, true, true);
-        System.out.println(Arrays.toString(randomDoublesArray));
+        // Double[] randomDoublesArray = JHArray.getRandomArrayOfDoublesBetween(10, 1.3, 4.6, true, true);
+        // System.out.println(Arrays.toString(randomDoublesArray));
+
+        // System.out.println(" ");
     }
 }
 
