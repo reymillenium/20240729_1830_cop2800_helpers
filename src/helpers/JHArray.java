@@ -1,9 +1,9 @@
 /*
  * MIT License
  *
- * Copyright (C) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
+ * Copyright (c) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * JHArray (Version 2024.07.29.2242)
+ * JHArray (Version 2024.08.13.2209)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@
 package helpers;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class JHArray {
     // Calculates the sum of all the elements inside an array of integers
@@ -261,5 +262,31 @@ public class JHArray {
         }
 
         return lowest;
+    }
+
+    // Returns an array of Integers filled with random int numbers, given a minimum and a maximum, and then either sorted or not, asc or desc
+    public static Integer[] getRandomArrayOfIntegersBetween(int length, int min, int max, boolean isSorted, boolean sortedAsc) {
+        Integer[] array = new Integer[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = (int) (Math.random() * (max - min + 1)) + min;
+        }
+
+        if (isSorted)
+            if (sortedAsc)
+                Arrays.sort(array);
+            else
+                Arrays.sort(array, Collections.reverseOrder());
+
+        return array;
+    }
+
+    // Returns an array of Integers filled with random int numbers, given a minimum and a maximum, and then either sorted or not, buy always asc in any case
+    public static Integer[] getRandomArrayOfIntegersBetween(int length, int min, int max, boolean isSorted) {
+        return getRandomArrayOfIntegersBetween(length, min, max, isSorted, true);
+    }
+
+    // Returns an array of Integers filled with random int numbers, given a minimum and a maximum, and not sorted at all
+    public static Integer[] getRandomArrayOfIntegersBetween(int length, int min, int max) {
+        return getRandomArrayOfIntegersBetween(length, min, max, false);
     }
 }
