@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2024 | Reinier Garcia Ramos | reymillenium@gmail.com | https://www.reiniergarcia.dev/
  *
- * JHArray (Version 2024.08.14.1947)
+ * JHArray (Version 2024.08.14.2132)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -73,22 +73,22 @@ public class JHArray {
         return (double) neatSumOfIntegersInArray(integersArray) / integersArray.length;
     }
 
-    // Calculates the average among all the numbers inside an array of integers
+    // Calculates the average among all the numbers inside an array of doubles
     public static double simpleAverageAmongDoublesInArray(final double[] doublesArray) {
         return (double) simpleSumOfDoublesInArray(doublesArray) / doublesArray.length;
     }
 
-    // Calculates the average among all the numbers inside an array of integers
+    // Calculates the average among all the numbers inside an array of doubles
     public static double neatAverageAmongDoublesInArray(final double[] doublesArray) {
         return (double) neatSumOfDoublesInArray(doublesArray) / doublesArray.length;
     }
 
-    // Calculates the sum of all the elements inside a two-dimensional array of doubles
-    public static int sumOfIntegersInTwoDimensionsArray(final double[][] twoDimensionsIntegersArray) {
+    // Calculates the sum of all the elements inside a two-dimensional array of integers
+    public static int sumOfIntegersInTwoDimensionsArray(final int[][] twoDimensionsIntegersArray) {
         int sum = 0;
 
-        for (double[] row : twoDimensionsIntegersArray) {
-            for (double number : row) {
+        for (int[] row : twoDimensionsIntegersArray) {
+            for (int number : row) {
                 sum += number;
             }
         }
@@ -96,8 +96,8 @@ public class JHArray {
         return sum;
     }
 
-    // Calculates the average among all the numbers inside an array of doubles
-    public static int averageAmongIntegersInTwoDimensionsArray(final double[][] twoDimensionsIntegersArray) {
+    // Calculates the average among all the numbers inside an array of integers
+    public static int averageAmongIntegersInTwoDimensionsArray(final int[][] twoDimensionsIntegersArray) {
         final int rows = twoDimensionsIntegersArray.length;
         final int columns = twoDimensionsIntegersArray[0].length;
 
@@ -333,5 +333,27 @@ public class JHArray {
     // Converts an array of Integer numbers into an array of int numbers
     public static int[] integerArrayToIntArray(Integer[] intArray) {
         return Arrays.stream(intArray).mapToInt(Integer::intValue).toArray();
+    }
+
+    // Allows to reverse in place (reference copy) a given array of integers
+    private static void reverseIntArray(int[] array) {
+        // In-place reversal of array
+        for (int i = 0; i < array.length / 2; i++) {
+            // Swapping the elements
+            int j = array[i];
+            array[i] = array[array.length - i - 1]; // Last element & approaching
+            array[array.length - i - 1] = j;
+        }
+    }
+
+    // Allows to reverse in place (reference copy) a given array of doubles
+    private static void reverseDoubleArray(double[] array) {
+        // In-place reversal of array
+        for (int i = 0; i < array.length / 2; i++) {
+            // Swapping the elements
+            double j = array[i];
+            array[i] = array[array.length - i - 1]; // Last element & approaching
+            array[array.length - i - 1] = j;
+        }
     }
 }
