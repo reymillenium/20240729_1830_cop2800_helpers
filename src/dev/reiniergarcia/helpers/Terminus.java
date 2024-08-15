@@ -25,7 +25,7 @@
  */
 
 
-package helpers;
+package dev.reiniergarcia.helpers;
 
 import java.util.ArrayList;
 import java.util.Scanner;

@@ -30,10 +30,6 @@
  * For more information, please refer to <http://unlicense.org>
  */
 
-import helpers.*;
-
-import java.util.Arrays;
-
 
 public class Main {
     public static void main(String[] args) {

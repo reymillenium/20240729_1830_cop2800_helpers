@@ -24,7 +24,7 @@
  * SOFTWARE.
  */
 
-package helpers;
+package dev.reiniergarcia.helpers;
 
 import java.util.Random;
 

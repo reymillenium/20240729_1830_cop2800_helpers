@@ -24,9 +24,7 @@
  * SOFTWARE.
  */
 
-package helpers;
-
-import java.util.List;
+package dev.reiniergarcia.helpers;
 
 public class Rangy {
     // Instance Attributes

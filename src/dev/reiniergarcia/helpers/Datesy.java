@@ -24,7 +24,7 @@
  * SOFTWARE.
  */
 
-package helpers;
+package dev.reiniergarcia.helpers;
 
 final public class Datesy {
     // Function to convert from a military Time (24 hours format) to civilian Time (12 hours format with meridian)
